@@ -3,7 +3,7 @@ const app = express()
 const mongoose = require('mongoose');
 const cors = require("cors")
 const server = '127.0.0.1:27017';
-const database = 'yourlocaldatabase';
+const database = 'AlmarSample';
 
 mongoose.connect(`mongodb://${server}/${database}`, {
     useNewUrlParser: true,
@@ -53,8 +53,8 @@ app.get("/api/db/:product", (req, res) => {
             await mClient.connect()
             
             console.log("connected")
-            const db = mClient.db("yourlocaldatabase")
-            const col = db.collection("yourcollection")
+            const db = mClient.db("AlmarSample")
+            const col = db.collection("sample")
             console.log(req.params.product)
 
             let myName = req.params.product
