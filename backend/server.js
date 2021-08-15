@@ -42,8 +42,36 @@ app.get("/api/db", (req, res) => {
         }
      }
     run().catch(console.error);
+    console.log("query", req.query)
+    // res.send(req.query)
 })
+// app.get("/:product", (req,res) => {
+//     res.send("hello")
+// })
+app.get("/api/db/search", (req, res) => {
+    async function run() {
 
+        try {
+            const MongoClient = require("mongodb").MongoClient;
+            const uri = `mongodb://${server}/${database}`;
+            const mClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+            await mClient.connect()
+            
+            console.log("connected")
+            const db = mClient.db("AlmarSample")
+            const col = db.collection("sample")
+            console.log(req.query)
+            const products = await col.findOne({"product": req.query.product})
+            console.log(products)
+            res.send(products)
+        } finally {
+            //await mClient.close()
+        }
+     }
+    //res.send(req.query)
+    run()
+})
 app.get("/api/db/:product", (req, res) => {
     async function run() {
 
@@ -72,7 +100,7 @@ app.get("/api/db/:product", (req, res) => {
             //await mClient.close()
         }
      }
-    //res.send(req.params)
+    //res.send(req.query)
     run()
 })
 
