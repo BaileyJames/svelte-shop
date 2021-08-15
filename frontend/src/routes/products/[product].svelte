@@ -21,13 +21,25 @@
   <p>fetching...</p>
   {:then}
       {#each myData as d}
-          <div class="product">
-              <h1>{d.product}</h1>
-              <p>£{d.price}</p>
-              <p>Expiration date: {d['expiry date']}</p>
-          </div>
+      <div class="product-wrapper">
+        <div class="product">
+            <h1>{d.product}</h1>
+            <p>£{d.price}</p>
+            <p>Expiration date: {d['expiry date']}</p>
+            <img src="{d.images}" />
+        </div>
+      </div>
+          
           
       {/each}
   {:catch error}
       <p>Error: {error.message}</p>
 {/await}
+<style>
+    .product-wrapper {
+        display: grid;
+    }
+    .product {
+        
+    }
+</style>

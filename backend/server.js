@@ -18,6 +18,7 @@ mongoose.connect(`mongodb://${server}/${database}`, {
 
 app.use(cors())
 
+
 app.get("/api/db", (req, res) => {
     async function run() {
 
@@ -31,7 +32,6 @@ app.get("/api/db", (req, res) => {
             console.log("connected")
             const db = mClient.db("AlmarSample")
             const col = db.collection("sample")
-
             const myDoc = await col.find().sort({_id:-1}).toArray()
             res.send(myDoc)
 
@@ -65,6 +65,31 @@ app.get("/api/db/:product", (req, res) => {
             console.log(newName)
             const product = await col.find({"product": newName}).sort({_id:-1}).toArray()
             res.send(product)
+
+        } finally {
+            //await mClient.close()
+        }
+     }
+    //res.send(req.params)
+    run()
+})
+
+app.post("/api/db", (req, res) => {
+    
+    async function run() {
+
+        try {
+            const MongoClient = require("mongodb").MongoClient;
+            const uri = `mongodb://${server}/${database}`;
+            const mClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+            await mClient.connect()
+            
+            console.log("connected")
+            const db = mClient.db("AlmarSample")
+            const col = db.collection("sample")
+            
+            // col.insertOne({a: 1})
 
         } finally {
             //await mClient.close()

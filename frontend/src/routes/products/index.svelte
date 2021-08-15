@@ -10,27 +10,38 @@ import { onMount } from "svelte";
 
     
 </script>
-<h1>HEllo</h1>
+<h1>HEll0</h1>
 {#await fetchData}
     <p>fetching...</p>
     {:then}
+    <div class="product-wrapper">
         {#each myData as d}
+        
             <div class="product">
                 <a href="/products/{d.product}">
                     <h1>{d.product}</h1>
                     <p>£{d.price}</p>
                     <p>Expiration date: {d['expiry date']}</p>
                 </a>
-                </div>
+            </div>
+            
             
         {/each}
+    </div>
+        
     {:catch error}
         <p>Error: {error.message}</p>
 {/await}
 
 <style>
+    .product-wrapper{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* grid-template-rows: 1fr 2fr; */
+    }
     .product {
         background-color: grey;
+        width: 100%;
     }
     .product a {
         color: black;
