@@ -1,9 +1,10 @@
 const express = require("express");
-const app = express()
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser')
 const cors = require("cors")
 const server = '127.0.0.1:27017';
 const database = 'AlmarSample';
+const app = express()
 
 mongoose.connect(`mongodb://${server}/${database}`, {
     useNewUrlParser: true,
@@ -17,6 +18,7 @@ mongoose.connect(`mongodb://${server}/${database}`, {
 });
 
 app.use(cors())
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get("/api/db", (req, res) => {
@@ -88,14 +90,15 @@ app.post("/api/db", (req, res) => {
             console.log("connected")
             const db = mClient.db("AlmarSample")
             const col = db.collection("sample")
-            
-            // col.insertOne({a: 1})
+            console.log(req.body)
+            col.insertOne(req.body)
 
         } finally {
             //await mClient.close()
         }
      }
-    //res.send(req.params)
+    res.send(req.body)
+    console.log(req.body)
     run()
 })
 
