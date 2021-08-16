@@ -62,9 +62,13 @@ app.get("/api/db/search", (req, res) => {
             const db = mClient.db("AlmarSample")
             const col = db.collection("sample")
             //console.log(req.query)
-            const products = await col.find({"product": req.query.product}).toArray()
-            //const products = await col.find({"price": 1.99})
+            //const products = await col.find({"product": `${/Apple/}`}).toArray()
+            const products = await col.find({"product": {'$regex': req.query.product}}).toArray()
 
+        // const products = await col.find({"product": /.*Apple.*/}).toArray()
+            //const products = await col.find({"price": 1.99})
+            
+            
             console.log(products)
             res.send(products)
         } finally {
