@@ -8,9 +8,21 @@ import { onMount } from "svelte";
         console.log(data)
     });
 
-    
+    // fetch("http://localhost:4000/api/db/search?product=Apple")
+    // .then(data => {
+    //     return data.json
+    // })
+    // .then(product => {
+    //     console.log("hi", product.price)
+    // })
 </script>
 <h1>HEll0</h1>
+<form method="get" action="http://localhost:3000/products/search/">
+    <label for="product">Search product</label>
+    <input type="text" id="product" name="product">
+    <input type="submit" value="Submit">
+</form>
+
 {#await fetchData}
     <p>fetching...</p>
     {:then}
