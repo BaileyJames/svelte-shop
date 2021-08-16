@@ -1,8 +1,3 @@
-<script>
-    import Products from "./products/index.svelte"
-    import Product from "./products/[product].svelte"
-</script>
-
 <p>Hello</p>
 <p>This is just a "simple" shop idea I made with <a href="https://svelte.dev/">Svelte</a>,
 or more specifically, <a href="https://kit.svelte.dev/">SvelteKit.</a></p>

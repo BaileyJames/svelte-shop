@@ -19,7 +19,7 @@ import { onMount } from "svelte";
 <h1>HEll0</h1>
 <form method="get" action="http://localhost:3000/products/search/">
     <label for="product">Search product</label>
-    <input type="text" id="product" name="product">
+    <input type="text" id="product" name="product" required="yes">
     <input type="submit" value="Submit">
 </form>
 

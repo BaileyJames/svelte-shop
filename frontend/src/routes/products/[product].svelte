@@ -26,7 +26,7 @@
             <h1>{d.product}</h1>
             <p>£{d.price}</p>
             <p>Expiration date: {d['expiry date']}</p>
-            <img src="{d.images}" />
+            <img src="{d.images}" alt="the thing"/>
         </div>
       </div>
           
@@ -39,7 +39,7 @@
     .product-wrapper {
         display: grid;
     }
-    .product {
+    /* .product {
         
-    }
+    } */
 </style>
