@@ -61,8 +61,10 @@ app.get("/api/db/search", (req, res) => {
             console.log("connected")
             const db = mClient.db("AlmarSample")
             const col = db.collection("sample")
-            console.log(req.query)
-            const products = await col.findOne({"product": req.query.product})
+            //console.log(req.query)
+            const products = await col.find({"product": req.query.product}).toArray()
+            //const products = await col.find({"price": 1.99})
+
             console.log(products)
             res.send(products)
         } finally {
