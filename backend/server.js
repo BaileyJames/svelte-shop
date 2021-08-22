@@ -46,7 +46,10 @@ const database = 'AlmarSample';
     app.get("/", (req, res) => {
         res.send("Hello");
     });
-    
+    app.post("/api/db", (req, res) => {
+        res.send(req.body)
+        col.insertOne(req.body)
+    })
     app.listen(4000, () => {
         console.log("Listening on 4000");
     });

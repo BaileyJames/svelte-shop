@@ -1,1 +1,0 @@
-import{S as s,i as e,s as t,t as l,g as o,f as a,G as c,d as r}from"../chunks/vendor-f871edcf.js";function n(s){let e;return{c(){e=l("email: svelte@iscool.com\r\ntel: 01111 111111")},l(s){e=o(s,"email: svelte@iscool.com\r\ntel: 01111 111111")},m(s,t){a(s,e,t)},p:c,i:c,o:c,d(s){s&&r(e)}}}export default class extends s{constructor(s){super(),e(this,s,null,n,t,{})}}
