@@ -16,9 +16,7 @@
         console.log(data)
     });
   </script>
-  <header>
-      <title>{myParam} | CoolShop.com | Shop for {myParam}'s at CoolShop.com</title>
-  </header>
+  
   {#await fetchData}
   <p>fetching...</p>
   {:then}
