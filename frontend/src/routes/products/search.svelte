@@ -16,10 +16,14 @@
 {#await fetchData}
     <p>Loading results...</p>
     {:then}
+        <p>{myData.length} records found for "{query}"</p>
         {#each myData as product}
         <div class="product">
-            <p>{product.product}</p>
-            <p>£{product.price}</p>
+            <a href="/products/{product.product}">
+                <p>{product.product}</p>
+                <p>£{product.price}</p>
+            </a>
+            
         </div>
         
         {/each}
