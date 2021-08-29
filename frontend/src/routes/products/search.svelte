@@ -9,7 +9,8 @@
         myData = data
         console.log(data)
         console.log(myData)
-    });
+
+    }).catch((error) => {console.log(error)});
     
 </script>
 
@@ -27,6 +28,9 @@
         </div>
         
         {/each}
+    {:catch}
+    <p>Error</p>
+    
 {/await}
 
 <style>
