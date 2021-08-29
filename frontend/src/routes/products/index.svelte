@@ -8,16 +8,10 @@ import { onMount } from "svelte";
         console.log(data)
     });
 
-    // fetch("http://localhost:4000/api/db/search?product=Apple")
-    // .then(data => {
-    //     return data.json
-    // })
-    // .then(product => {
-    //     console.log("hi", product.price)
-    // })
+    export let user;
 </script>
-<h1>HEll0</h1>
-<form method="get" action="http://localhost:3000/products/search/">
+<h1>HEll0 {user}</h1>
+<form method="get" action={`http://localhost:3000/${user == "admin"? "admin/":""}products/search/`}>
     <label for="product">Search product</label>
     <input type="text" id="product" name="product" required="yes">
     <input type="submit" value="Submit">
@@ -60,4 +54,3 @@ import { onMount } from "svelte";
         text-decoration: none;
     }
 </style>
-
