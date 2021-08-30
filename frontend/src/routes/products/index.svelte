@@ -24,11 +24,14 @@ import { onMount } from "svelte";
         {#each myData as d}
         
             <div class="product">
-                <a href="/products/{d.product}">
+                <a href={`${user == "admin"? "/admin":""}/products/${d.product}`}>
                     <h1>{d.product}</h1>
                     <p>£{d.price}</p>
                     <p>Expiration date: {d['expiry date']}</p>
                 </a>
+                {#if user == "admin"}
+                    <a href={`/admin/products/${d.product}`}>Click to edit component</a>
+                {/if}
             </div>
             
             

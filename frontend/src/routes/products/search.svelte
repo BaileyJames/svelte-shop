@@ -11,7 +11,7 @@
         console.log(myData)
 
     }).catch((error) => {console.log(error)});
-    
+
 </script>
 
 {#await fetchData}
