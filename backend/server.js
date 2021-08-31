@@ -20,9 +20,8 @@ const database = 'AlmarSample';
     const db = mClient.db("AlmarSample");
     const col = db.collection("sample");
 
-
     app.get("/api/db", async (req, res) => {
-        res.send(await col.find().sort({_id: -1}).toArray());
+        res.send(await col.find().sort({_id: -1}).toArray());   
     });
     
     app.get("/api/db/search", async (req, res) => {
@@ -46,9 +45,27 @@ const database = 'AlmarSample';
     app.get("/", (req, res) => {
         res.send("Hello");
     });
-    app.post("/api/db", (req, res) => {
-        res.send(req.body)
-        col.insertOne(req.body)
+    app.post("/api/db", async (req, res) => {
+
+        //This checks to see if the id of the product submitted already exists, and
+        //if it does, it will (when i've finished it) do a patch request to edit
+        //the product, and if it doesn't exist, it will make a new product.
+        
+        //col.insertOne(req.body)
+
+        let productIdInt = parseInt(req.body._id)
+
+        let myArr = (await col.find({_id: productIdInt}).toArray())
+
+        
+        if(myArr != "") {
+            if (myArr[0]._id == productIdInt){
+                res.send("HEI2I")
+                
+            }
+        }
+        else {res.send("cant find")}
+
     })
     app.listen(4000, () => {
         console.log("Listening on 4000");

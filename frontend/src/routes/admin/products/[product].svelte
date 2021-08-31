@@ -37,6 +37,9 @@
                 <input type="text" id="price" name="price" value="{d.price}">
                 <br>
                 <input type="date" id="expiration date" name="expiration date" value="{d['expiry date']}">
+                <br>
+                id:
+                <input type="number" id="expiration date" name="_id" value="{d._id}" >
 
                 <input type="submit" value="Submit">
 
