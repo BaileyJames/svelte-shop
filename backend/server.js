@@ -60,11 +60,17 @@ const database = 'AlmarSample';
         
         if(myArr != "") {
             if (myArr[0]._id == productIdInt){
-                res.send("HEI2I")
-                
+                console.log(req.body)
+                await col.replaceOne({_id: productIdInt}, {
+                _id: productIdInt,
+                product: req.body.product,
+                price: req.body.price,
+                ["expiry date"]: req.body["expiration date"]
+                })
+                res.send(req.body)
             }
         }
-        else {res.send("cant find")}
+        else {res.send("Can not find product in the database. Please check that the id is correct.")}
 
     })
     app.listen(4000, () => {
