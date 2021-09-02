@@ -25,7 +25,7 @@
       {#each myData as d}
       <div class="product-wrapper">
         <div class="product">
-            <form method="POST" action="http://localhost:4000/api/db">
+            <form method="POST" action="http://localhost:4000/api/db/update">
                 <h1>{d.product}</h1>
                 <p>£{d.price}</p>
                 <p>Expiration date: {d['expiry date']}</p>

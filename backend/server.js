@@ -9,7 +9,7 @@ const database = 'AlmarSample';
 	const app = express();
 	app.use(cors());
     app.use(bodyParser.urlencoded({ extended: true }));
-	
+
     const MongoClient = require("mongodb").MongoClient;
     const uri = `mongodb://${server}/${database}`;
     const mClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -46,12 +46,19 @@ const database = 'AlmarSample';
         res.send("Hello");
     });
     app.post("/api/db", async (req, res) => {
-
+        console.log(req.body)
+        //Changes the _id to an integer instead of a string.
+        req.body._id = parseInt(req.body._id)
+        req.body.price = parseFloat(req.body.price)
+        console.log(req.body)
+        await col.insertOne(req.body)
+        res.send("success")
+    })
+    app.post("/api/db/update", async (req, res) => {
         //This checks to see if the id of the product submitted already exists, and
         //if it does, it will (when i've finished it) do a patch request to edit
         //the product, and if it doesn't exist, it will make a new product.
         
-        //col.insertOne(req.body)
 
         let productIdInt = parseInt(req.body._id)
 
@@ -70,7 +77,7 @@ const database = 'AlmarSample';
                 res.send(req.body)
             }
         }
-        else {res.send("Can not find product in the database. Please check that the id is correct.")}
+        else {res.status(404).send("Could not find product in the database. Please check that the id is correct.")}
 
     })
     app.listen(4000, () => {
