@@ -10,7 +10,7 @@ import { onMount } from "svelte";
 
     export let user;
 </script>
-<h1>HEll0 {user}</h1>
+
 <form method="get" action={`http://localhost:3000/${user == "admin"? "admin/":""}products/search/`}>
     <label for="product">Search product</label>
     <input type="text" id="product" name="product" required="yes">

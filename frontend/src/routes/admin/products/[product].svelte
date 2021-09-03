@@ -39,7 +39,7 @@
                 <input type="date" id="expiration date" name="expiration date" value="{d['expiry date']}">
                 <br>
                 id:
-                <input type="number" id="expiration date" name="_id" value="{d._id}" >
+                <input type="number" id="expiration date" name="_id" value="{d._id}" readonly>
 
                 <input type="submit" value="Submit">
 
