@@ -5,7 +5,7 @@
         //automatically has an inputted unique id
         console.log(data[0]._id)
         largestId = data[0]._id + 1
-    });
+    }).catch((err) => {console.log("There was an error: ", err)});
 </script>
 <div class="product-wrapper">
     <div class="product">

@@ -6,7 +6,7 @@ import { onMount } from "svelte";
     const fetchData = fetch("http://localhost:4000/api/db").then((response) => response.json()).then((data) => {
         myData = data
         console.log(data)
-    });
+    }).catch((err) => {console.log("There was an error: ", err)});
 
     export let user;
 </script>

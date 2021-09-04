@@ -10,7 +10,7 @@
         console.log(data)
         console.log(myData)
 
-    }).catch((error) => {console.log(error)});
+    }).catch((err) => {console.log("There was an error: ", err)});
 
 </script>
 

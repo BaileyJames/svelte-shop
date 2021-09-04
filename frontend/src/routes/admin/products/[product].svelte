@@ -14,7 +14,7 @@
     const fetchData = fetch(`${apiUrl}/${myParam}`).then((response) => response.json()).then((data) => {
         myData = data
         console.log(data)
-    });
+    }).catch((err) => {console.log("There was an error: ", err)});
   </script>
   <header>
       <title>{myParam} | CoolShop.com | Shop for {myParam}'s at CoolShop.com</title>
