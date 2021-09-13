@@ -9,8 +9,9 @@
         myData = data
         console.log(data)
         console.log(myData)
-    });
-    
+
+    }).catch((err) => {console.log("There was an error: ", err)});
+
 </script>
 
 {#await fetchData}
@@ -23,6 +24,9 @@
         </div>
         
         {/each}
+    {:catch}
+    <p>Error</p>
+    
 {/await}
 
 <style>

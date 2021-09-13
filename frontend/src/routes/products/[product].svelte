@@ -7,14 +7,13 @@
     console.log(slug)
     const apiUrl = "http://localhost:4000/api/db"
     let data = []
-
-    let myParam = $page.params.product
+    const myParam = $page.params.product
     let myData = []
 
     const fetchData = fetch(`${apiUrl}/${myParam}`).then((response) => response.json()).then((data) => {
         myData = data
         console.log(data)
-    });
+    }).catch((err) => {console.log("There was an error: ", err)});
   </script>
   
   {#await fetchData}

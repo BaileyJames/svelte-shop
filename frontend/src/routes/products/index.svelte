@@ -6,18 +6,12 @@ import { onMount } from "svelte";
     const fetchData = fetch("http://localhost:4000/api/db").then((response) => response.json()).then((data) => {
         myData = data
         console.log(data)
-    });
+    }).catch((err) => {console.log("There was an error: ", err)});
 
-    // fetch("http://localhost:4000/api/db/search?product=Apple")
-    // .then(data => {
-    //     return data.json
-    // })
-    // .then(product => {
-    //     console.log("hi", product.price)
-    // })
+    export let user;
 </script>
-<h1>HEll0</h1>
-<form method="get" action="http://localhost:3000/products/search/">
+
+<form method="get" action={`http://localhost:3000/${user == "admin"? "admin/":""}products/search/`}>
     <label for="product">Search product</label>
     <input type="text" id="product" name="product" required="yes">
     <input type="submit" value="Submit">
@@ -30,11 +24,14 @@ import { onMount } from "svelte";
         {#each myData as d}
         
             <div class="product">
-                <a href="/products/{d.product}">
+                <a href={`${user == "admin"? "/admin":""}/products/${d.product}`}>
                     <h1>{d.product}</h1>
                     <p>£{d.price}</p>
                     <p>Expiration date: {d['expiry date']}</p>
                 </a>
+                {#if user == "admin"}
+                    <a href={`/admin/products/${d.product}`}>Click to edit component</a>
+                {/if}
             </div>
             
             
@@ -60,4 +57,3 @@ import { onMount } from "svelte";
         text-decoration: none;
     }
 </style>
-

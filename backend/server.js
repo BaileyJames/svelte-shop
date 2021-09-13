@@ -9,7 +9,7 @@ const database = 'AlmarSample';
 	const app = express();
 	app.use(cors());
     app.use(bodyParser.urlencoded({ extended: true }));
-	
+
     const MongoClient = require("mongodb").MongoClient;
     const uri = `mongodb://${server}/${database}`;
     const mClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -20,9 +20,8 @@ const database = 'AlmarSample';
     const db = mClient.db("AlmarSample");
     const col = db.collection("sample");
 
-
     app.get("/api/db", async (req, res) => {
-        res.send(await col.find().sort({_id: -1}).toArray());
+        res.send(await col.find().sort({_id: -1}).toArray());   
     });
     
     app.get("/api/db/search", async (req, res) => {
@@ -46,9 +45,40 @@ const database = 'AlmarSample';
     app.get("/", (req, res) => {
         res.send("Hello");
     });
-    app.post("/api/db", (req, res) => {
-        res.send(req.body)
-        col.insertOne(req.body)
+    app.post("/api/db", async (req, res) => {
+        console.log(req.body)
+        //Changes the _id to an integer instead of a string.
+        req.body._id = parseInt(req.body._id)
+        req.body.price = parseFloat(req.body.price)
+        console.log(req.body)
+        await col.insertOne(req.body)
+        res.send("success")
+    })
+    app.post("/api/db/update", async (req, res) => {
+        //This checks to see if the id of the product submitted already exists, and
+        //if it does, it will (when i've finished it) do a patch request to edit
+        //the product, and if it doesn't exist, it will make a new product.
+        
+
+        let productIdInt = parseInt(req.body._id)
+
+        let myArr = (await col.find({_id: productIdInt}).toArray())
+
+        
+        if(myArr != "") {
+            if (myArr[0]._id == productIdInt){
+                console.log(req.body)
+                await col.replaceOne({_id: productIdInt}, {
+                _id: productIdInt,
+                product: req.body.product,
+                price: req.body.price,
+                ["expiry date"]: req.body["expiration date"]
+                })
+                res.send(req.body)
+            }
+        }
+        else {res.status(404).send("Could not find product in the database. Please check that the id is correct.")}
+
     })
     app.listen(4000, () => {
         console.log("Listening on 4000");
