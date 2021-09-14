@@ -1,2 +1,6 @@
 #!/bin/bash
-node server.js
+
+#For some reason whenever I reboot mongod is running in the background and I cannot get it to stop running at boot,
+#so I've just simply added a script to stop it then run it again because it gives me errors that idk how to fix. this is just easier
+sudo systemctl stop mongodb.service
+sudo mongod & node server.js
