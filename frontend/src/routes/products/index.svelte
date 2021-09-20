@@ -1,6 +1,6 @@
 <script>
 import { onMount } from "svelte";
-
+import style from "../../styles/products.css"
     let myData = []
 
     const fetchData = fetch("http://localhost:4000/api/db").then((response) => response.json()).then((data) => {
@@ -11,6 +11,8 @@ import { onMount } from "svelte";
     export let user;
 </script>
 
+<div class="container">
+    
 <form method="get" action={`http://localhost:3000/${user == "admin"? "admin/":""}products/search/`}>
     <label for="product">Search product</label>
     <input type="text" id="product" name="product" required="yes">
@@ -23,7 +25,7 @@ import { onMount } from "svelte";
     <div class="product-wrapper">
         {#each myData as d}
         
-            <div class="product">
+            <li class="product">
                 <a href={`${user == "admin"? "/admin":""}/products/${d.product}`}>
                     <h1>{d.product}</h1>
                     <p>£{d.price}</p>
@@ -32,7 +34,7 @@ import { onMount } from "svelte";
                 {#if user == "admin"}
                     <a href={`/admin/products/${d.product}`}>Click to edit component</a>
                 {/if}
-            </div>
+            </li>
             
             
         {/each}
@@ -42,18 +44,5 @@ import { onMount } from "svelte";
         <p>Error: {error.message}</p>
 {/await}
 
-<style>
-    .product-wrapper{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        /* grid-template-rows: 1fr 2fr; */
-    }
-    .product {
-        background-color: grey;
-        width: 100%;
-    }
-    .product a {
-        color: black;
-        text-decoration: none;
-    }
-</style>
+</div>
+

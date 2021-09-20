@@ -1,0 +1,18 @@
+.product-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.product-wrapper .product {
+  padding: 2em 2em;
+  list-style-type: none;
+}
+
+.product-wrapper .product a {
+  text-decoration: none;
+  color: #000;
+}
+/*# sourceMappingURL=products.css.map */

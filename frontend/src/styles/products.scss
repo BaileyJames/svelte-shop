@@ -1,0 +1,12 @@
+.product-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    .product {
+        padding: 2em 2em;
+        list-style-type: none;
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+    }
+}
