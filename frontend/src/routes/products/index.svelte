@@ -24,9 +24,23 @@ import style from "../../styles/products.css"
     {:then}
     <div class="product-wrapper">
         {#each myData as d}
+
+        <div class="product">
+            <div class="content">
+                <div class="image">
+                    <img src="{d.img}" alt="{d.product}" class="product-image">
+                </div>
+                <div class="text">
+                    <h1>{d.product}</h1>
+                    <p>£{d.price}</p>
+                    <p>Expiration date: {d['expiry date']}</p>
+                </div>
+            </div>
+        </div>
         
-            <li class="product">
+            <!-- <li class="product">
                 <a href={`${user == "admin"? "/admin":""}/products/${d.product}`}>
+                        <img src="{d.img}" alt="cherry" width="200px"> 
                     <h1>{d.product}</h1>
                     <p>£{d.price}</p>
                     <p>Expiration date: {d['expiry date']}</p>
@@ -34,7 +48,7 @@ import style from "../../styles/products.css"
                 {#if user == "admin"}
                     <a href={`/admin/products/${d.product}`}>Click to edit component</a>
                 {/if}
-            </li>
+            </li> -->
             
             
         {/each}
