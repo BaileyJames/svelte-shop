@@ -15,10 +15,9 @@
         myData = data
         console.log(data)
     }).catch((err) => {console.log("There was an error: ", err)});
-  </script>
-  <header>
-      <title>{myParam} | CoolShop.com | Shop for {myParam}'s at CoolShop.com</title>
-  </header>
+</script>
+  
+
   {#await fetchData}
   <p>fetching...</p>
   {:then}
@@ -45,18 +44,10 @@
 
             </form>
         </div>
-      </div>
+    </div>
           
           
       {/each}
   {:catch error}
       <p>Error: {error.message}</p>
 {/await}
-<style>
-    .product-wrapper {
-        display: grid;
-    }
-    /* .product {
-        
-    } */
-</style>

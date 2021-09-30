@@ -48,4 +48,8 @@ header {
   text-decoration: none;
   color: #000;
 }
+
+p {
+  max-width: 900px;
+}
 /*# sourceMappingURL=style.css.map */

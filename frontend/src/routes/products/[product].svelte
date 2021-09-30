@@ -15,7 +15,17 @@
         console.log(data)
     }).catch((err) => {console.log("There was an error: ", err)});
   </script>
-  
+  <svelte:head>
+    <title>{myParam} | CoolShop.com | Shop for {myParam}s at CoolShop.com</title>
+    <link rel="canonical" href="http://www.coolshop.com"/>
+    {#await fetchData}
+    {:then} 
+    <meta name="description" content="{myData[0].product}"/>
+    <meta name="keywords" content="{myData[0].keywords}"/>
+    {/await}
+    <meta name="keywords" content="">
+</svelte:head>
+
   {#await fetchData}
   <p>fetching...</p>
   {:then}
