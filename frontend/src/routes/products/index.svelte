@@ -38,8 +38,8 @@ import style from "../../styles/products.css"
                 <div class="text">
                     <h1>{d.product}</h1>
                     <p>£{d.price}</p>
-                    <p>Expiration date: {d['expiry date']}</p>
-                    <a href="products/{d.product}">Click here</a>
+                    <!-- <p>Expiration date: {d['expiry date']}</p> -->
+                    <!-- <a href="products/{d.product}">Click here</a> -->
                 </div>
             </div>
         </div>
