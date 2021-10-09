@@ -11,26 +11,8 @@
         console.log(myData)
 
     }).catch((err) => {console.log("There was an error: ", err)});
+    import ProductTemplate from "./index.svelte"
 
 </script>
 
-{#await fetchData}
-    <p>Loading results...</p>
-    {:then}
-        {#each myData as product}
-        <div class="product">
-            <p>{product.product}</p>
-            <p>£{product.price}</p>
-        </div>
-        
-        {/each}
-    {:catch}
-    <p>Error</p>
-    
-{/await}
-
-<style>
-    .product {
-        background-color: grey;
-    }
-</style>
+<ProductTemplate search={true} products={myData}/>

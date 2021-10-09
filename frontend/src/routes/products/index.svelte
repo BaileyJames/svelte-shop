@@ -9,6 +9,8 @@ import style from "../../styles/products.css"
     }).catch((err) => {console.log("There was an error: ", err)});
 
     export let user;
+    export let search = false;
+    export let products = [];
 </script>
 <svelte:head>
     <title>The Ultimate Food Store | CoolShop.com</title>
@@ -28,36 +30,39 @@ import style from "../../styles/products.css"
     <p>fetching...</p>
     {:then}
     <div class="product-wrapper">
-        {#each myData as d}
-
-        <div class="product">
-            <div class="content">
-                <div class="image">
-                    <img src="{d.img}" alt="{d.product}" class="product-image">
-                </div>
-                <div class="text">
-                    <h1>{d.product}</h1>
-                    <p>£{d.price}</p>
-                    <!-- <p>Expiration date: {d['expiry date']}</p> -->
-                    <!-- <a href="products/{d.product}">Click here</a> -->
+        {#if search===true && products.length > 0}
+            {#each products as d}
+            <div class="product">
+                <div class="content">
+                    <div class="image">
+                        <img src="{d.img}" alt="{d.product}" class="product-image">
+                    </div>
+                    <div class="text">
+                        <h1>{d.product}</h1>
+                        <p>£{d.price}</p>
+                    </div>
                 </div>
             </div>
-        </div>
+            {/each}
+            {:else}
+            {#each myData as d}
+
+            <div class="product">
+                <div class="content">
+                    <div class="image">
+                        <img src="{d.img}" alt="{d.product}" class="product-image">
+                    </div>
+                    <div class="text">
+                        <h1>{d.product}</h1>
+                        <p>£{d.price}</p>
+                    </div>
+                </div>
+            </div>
+            {/each}
+        {/if}
         
-            <!-- <li class="product">
-                <a href={`${user == "admin"? "/admin":""}/products/${d.product}`}>
-                        <img src="{d.img}" alt="cherry" width="200px"> 
-                    <h1>{d.product}</h1>
-                    <p>£{d.price}</p>
-                    <p>Expiration date: {d['expiry date']}</p>
-                </a>
-                {#if user == "admin"}
-                    <a href={`/admin/products/${d.product}`}>Click to edit component</a>
-                {/if}
-            </li> -->
-            
-            
-        {/each}
+
+        
     </div>
         
     {:catch error}
@@ -65,4 +70,3 @@ import style from "../../styles/products.css"
 {/await}
 
 </div>
-
