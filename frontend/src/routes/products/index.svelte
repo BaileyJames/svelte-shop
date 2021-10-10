@@ -30,12 +30,13 @@ import style from "../../styles/products.css"
     <p>fetching...</p>
     {:then}
     <div class="product-wrapper">
+        <!-- This is if you are searching or not -->
         {#if search===true && products.length > 0}
             {#each products as d}
             <div class="product">
                 <div class="content">
                     <div class="image">
-                        <img src="{d.img}" alt="{d.product}" class="product-image">
+                        <img src="{d.img}" alt="{d.product}">
                     </div>
                     <div class="text">
                         <h1>{d.product}</h1>
@@ -50,7 +51,7 @@ import style from "../../styles/products.css"
             <div class="product">
                 <div class="content">
                     <div class="image">
-                        <img src="{d.img}" alt="{d.product}" class="product-image">
+                        <img src="{d.img}" alt="{d.product}">
                     </div>
                     <div class="text">
                         <h1>{d.product}</h1>

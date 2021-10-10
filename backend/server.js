@@ -25,7 +25,7 @@ const database = 'AlmarSample';
     });
     
     app.get("/api/db/search", async (req, res) => {
-        const products = await col.find({"product": {'$regex': req.query.product, $options: 'i'}}).toArray();
+        const products = await col.find({"product": {'$regex': req.query.product, $options: 'i'}}).toArray()
         res.send(products);
     });
 	

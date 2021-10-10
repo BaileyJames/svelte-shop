@@ -4,12 +4,15 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
+
 .product-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 .product {
@@ -22,8 +25,15 @@
   background-color: rgba(233, 233, 233, 0.596);
 }
 
-img {
+.image {
+  text-align: center;
+}
+
+.image img {
   width: 200px;
-  height: 300px;
+  height: 200px;
+  margin: 0 auto;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 /*# sourceMappingURL=products.css.map */

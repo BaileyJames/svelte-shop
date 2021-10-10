@@ -6,6 +6,8 @@
 .product-wrapper {
     display: flex;
     flex-wrap: wrap;
+    max-width: 1500px;
+    margin: 0 auto;
 }
 
 .product {
@@ -16,7 +18,19 @@
     background-color: rgba(233, 233, 233, 0.596);
 }
 
-img {
-    width: 200px;
-    height: 300px;
+.image {
+    text-align: center;
+
+    img {
+        width: 200px;
+        height: 200px;
+        // max-height: 100%;
+        margin: 0 auto;
+        object-fit: cover;
+    }
+}
+.text {
+    h1 {
+        // max-width: 100px;
+    }
 }
